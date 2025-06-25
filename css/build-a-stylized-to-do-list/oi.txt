@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Styled To-Do List</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <ul class="todo-list">
+        <li>
+            <input type="checkbox" id="input-id1" name="input-id1">
+            <label for="input-id1">Ver Adassa</label>
+            <ul class="sub-item">
+                <li>
+                    <a class="sub-item-link" href="https://en.wikipedia.org/wiki/Adassa" target="_blank">Adassa</a>
+                </li>
+            </ul>
+        </li>
+
+        <li>
+            <input type="checkbox" id="input-id2" name="input-id2">
+            <label for="input-id2">Ver Edesse</label>
+            <ul class="sub-item">
+                <li>
+                    <a class="sub-item-link" href="https://en.wikipedia.org/wiki/Edesse" target="_blank">Edesse</a>
+                </li>
+            </ul>
+            </label>
+        </li>
+
+        <li>
+            <input type="checkbox" id="input-id3" name="input-id3">
+            <label for="input-id3">Ver Idissi</label>
+            <ul class="sub-item">
+                <li>
+                    <a class="sub-item-link" href="https://en.wikipedia.org/wiki/Idissi" target="_blank">Idissi</a>
+                </li>
+            </ul>
+        </li>
+
+        <li>
+            <input type="checkbox"id="input-id4" name="input-id4">
+            <label for="input-id4">Ver Odosso</label>
+            <ul class="sub-item">
+                <li>
+                    <a class="sub-item-link" href="https://en.wikipedia.org/wiki/Odosso" target="_blank">Odosso</a>
+                </li>
+            </ul>
+
+        </li>
+    </ul>
+
+</body>
+
+</html>
