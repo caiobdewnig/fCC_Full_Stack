@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Quero Virar Cowboy Triste</title>
+
+  <!-- Fonte retrô -->
+  <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+  
+  <!-- jsPDF para gerar o PDF -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Special Elite', serif;
+      background: url('https://media.istockphoto.com/id/108202298/pt/foto/silhueta-de-cowboy-triste.jpg?s=612x612&w=0&k=20&c=xXMxAS1BbCfKR4axoG-rIQ5lJ9vZ550VAfKVmXpoDFA=') no-repeat center center fixed;
+      background-size: cover;
+      color: #f8f0e3;
+      text-align: center;
+      padding: 5vh 2rem;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      transition: background 2s;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      font-size: 3rem;
+      text-shadow: 2px 2px #000000aa;
+      animation: fadeIn 3s ease forwards;
+      opacity: 0;
+    }
+
+    p {
+      font-size: 1.3rem;
+      max-width: 600px;
+      margin: 2rem auto;
+      line-height: 1.6;
+      animation: fadeIn 4s ease forwards;
+      opacity: 0;
+    }
+
+    button {
+      background-color: #5e4230;
+      color: #fff2e1;
+      border: none;
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 2rem;
+      transition: background 0.3s;
+      animation: fadeIn 5s ease forwards;
+      opacity: 0;
+    }
+
+    button:hover {
+      background-color: #7b5a44;
+    }
+
+    .cowboy-mode {
+      background: url('https://media.istockphoto.com/id/108202298/pt/foto/silhueta-de-cowboy-triste.jpg?s=612x612&w=0&k=20&c=xXMxAS1BbCfKR4axoG-rIQ5lJ9vZ550VAfKVmXpoDFA=') no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    form {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 2rem;
+      border-radius: 12px;
+      max-width: 400px;
+      margin: 2rem auto;
+      opacity: 0;
+      animation: fadeIn 2s ease forwards;
+      display: none;
+    }
+
+    label, input {
+      display: block;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+      text-align: left;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      width: 100%;
+      padding: 0.5rem;
+      border: 1px solid #a88b71;
+      border-radius: 5px;
+      font-family: inherit;
+    }
+
+    input[type="submit"],
+    button[type="button"] {
+      background-color: #9e7453;
+      color: white;
+      padding: 0.7rem 1.3rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-top: 1rem;
+    }
+
+    input[type="submit"]:hover,
+    button[type="button"]:hover {
+      background-color: #835e40;
+    }
+
+    .message {
+      font-size: 1.4rem;
+      color: #ffe9d6;
+      margin-top: 2rem;
+      opacity: 0;
+      animation: fadeIn 2s ease forwards;
+    }
+
+    #diario {
+      margin-top: 2rem;
+      display: none;
+    }
+
+    #entradaSalva {
+      margin-top: 1rem;
+      font-style: italic;
+      color: #e8d5bd;
+    }
+
+    .horse {
+      position: fixed;
+      bottom: 0;
+      left: -150px;
+      width: 150px;
+      animation: gallop 12s linear infinite;
+      opacity: 0.8;
+      z-index: -1;
+    }
+
+    @keyframes gallop {
+      0% {
+        left: -150px;
+      }
+      100% {
+        left: 100%;
+      }
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Áudio da saudade -->
+  <audio autoplay loop>
+    <source src="https://www.fesliyanstudios.com/play-mp3/6677" type="audio/mpeg">
+    Seu navegador não suporta áudio HTML5.
+  </audio>
+
+  <!-- Texto principal -->
+  <h1>Você Ouviu o Chamado?</h1>
+  <p>O vento canta seu nome nas colinas. O sol se põe mais lento quando seu coração ainda não é do sertão.  
+  Chega de cidade. Chega de barulho.  
+  Venha ser Cowboy Triste. A dor é sua irmã. O cavalo, seu único confidente.</p>
+
+  <button onclick="ativarCowboy()">Quero virar Cowboy Triste</button>
+
+  <!-- Formulário de iniciação -->
+  <form id="formulario" onsubmit="enviarFormulario(event)">
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome" name="nome" required>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+
+    <input type="submit" value="Confirmar minha Tristeza">
+  </form>
+
+  <!-- Mensagem e botão PDF -->
+  <div class="message" id="mensagem"></div>
+
+  <!-- Diário das Mágoas -->
+  <div id="diario">
+    <h2>📔 Diário das Mágoas</h2>
+    <p>Escreva sua dor, guarde sua saudade.</p>
+    <textarea id="textoDiario" rows="6" placeholder="Aqui começa sua confissão..."></textarea><br>
+    <button onclick="salvarDiario()">💾 Salvar Diário</button>
+    <button onclick="mostrarDiario()">📖 Ver Última Entrada</button>
+    <div id="entradaSalva"></div>
+  </div>
+
+  <!-- Cavalinho galopando -->
+  <img class="horse" src="https://i.pinimg.com/originals/0b/90/cc/0b90cc02916566d5c40c12e48f4dd088.gif" alt="Cavalo galopando triste">
+
+  <script>
+    function ativarCowboy() {
+      document.body.classList.add('cowboy-mode');
+      const form = document.getElementById('formulario');
+      form.style.display = 'block';
+      form.style.animation = 'fadeIn 2s forwards';
+    }
+
+    function enviarFormulario(e) {
+      e.preventDefault();
+      const nome = document.getElementById('nome').value;
+      const mensagem = document.getElementById('mensagem');
+      mensagem.innerHTML = `
+        🌵 <strong>${nome}</strong>, sua jornada começou.<br>
+        Agora você é oficialmente um Cowboy Triste.<br><br>
+        <em>“Cavalgo pra frente, mas meu coração ainda dorme naquele domingo cinza.”</em>
+      `;
+      mensagem.style.opacity = '1';
+
+      document.getElementById('formulario').style.display = 'none';
+
+      const botaoPDF = document.createElement('button');
+      botaoPDF.textContent = '📄 Gerar Certificado de Cowboy Triste';
+      botaoPDF.type = 'button';
+      botaoPDF.onclick = () => gerarPDF(nome);
+      mensagem.appendChild(botaoPDF);
+
+      document.getElementById('diario').style.display = 'block';
+    }
+
+    function gerarPDF(nome) {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+
+      doc.setFont("helvetica", "italic");
+      doc.setFontSize(20);
+      doc.text("Certificado de Cowboy Triste", 20, 40);
+
+      doc.setFontSize(14);
+      doc.text(`Certificamos que ${nome},`, 20, 60);
+      doc.text("assumiu sua saudade, seu vazio e seu cavalo,", 20, 70);
+      doc.text("e agora cavalga pelos campos da solidão consciente.", 20, 80);
+
+      doc.setFontSize(12);
+      doc.text("Emitido com poeira nos olhos e amor perdido no peito.", 20, 100);
+      doc.text("— Rancho Digital dos Cowboys Tristes, 2025", 20, 120);
+
+      doc.save(`certificado_cowboy_triste_${nome}.pdf`);
+    }
+
+    function salvarDiario() {
+      const texto = document.getElementById('textoDiario').value;
+      localStorage.setItem('diario_triste', texto);
+      alert("Diário salvo nas nuvens da memória (localStorage).");
+    }
+
+    function mostrarDiario() {
+      const texto = localStorage.getItem('diario_triste');
+      const div = document.getElementById('entradaSalva');
+      div.textContent = texto ? `"${texto}"` : "Nada ainda... mas o silêncio também dói.";
+    }
+  </script>
+</body>
+</html>

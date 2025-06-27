@@ -1,0 +1,44 @@
+a {
+  text-decoration: none;
+}
+
+
+a:link {
+  color: purple
+}
+
+a:focus {
+  outline: 2px solid red;
+  outline-offset: 2px;
+}
+
+a:hover {
+  color: #A2123B;
+}
+
+
+a:active {
+  color: #B1232A
+}
+
+a:visited {
+  color: limegreen
+}
+
+
+
+h1 {
+  text-align: center;
+}
+
+ul {
+  line-height: 25px;
+}
+
+
+
+
+body {
+  background-color: beige;
+  font-family: Arial, sans-serif;
+}

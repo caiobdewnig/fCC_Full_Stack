@@ -1,0 +1,72 @@
+body {
+  background-color: 	#d2e7d6
+}
+
+.blog-post-card {
+  background-color: white;
+  border-radius: 50px;
+  text-align: center;
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 6px outset rgba(149, 5, 5, 0.806);
+}
+
+.post-img {
+  background-image: url(https://as2.ftcdn.net/jpg/00/29/85/65/1000_F_29856559_i3rU4Pg9HPhzKPhte71uzFkEdJdJ9ykh.jpg);
+  background-size: cover;
+  background-position: center;
+  border-top-left-radius: 39px;
+  border-top-right-radius: 39px;
+  max-width: 300px;
+  height: 100%;
+  border-bottom: solid rgba(149, 5, 5, 0.806)
+}
+
+.post-title {
+  font-family: "Times New Roman", Times, serif;
+  letter-spacing: 2.8px;
+  word-spacing: 6px;
+  color: #44b006;
+  font-weight: normal;
+  text-decoration: none solid rgb(68, 68, 68);
+  font-style: normal;
+  font-variant: small-caps;
+  text-transform: none;
+  margin: 5px
+}
+
+.post-excerpt {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 16px;
+  letter-spacing: 2px;
+  word-spacing: 2px;
+  color: #0B0A85;
+  font-weight: normal;
+  text-decoration: none solid rgb(68, 68, 68);
+  font-style: normal;
+  font-variant: normal;
+  text-transform: none;
+  margin: 20px;
+  text-align: center;
+}
+
+
+.post-content {
+  padding: 5px
+}
+
+.read-more {
+  padding: 2px 30px;
+  border: 0;
+  border-radius: 100px;
+  background-color: #520753;
+  color: #f7e7e7;
+  font-weight: Bold;
+  margin: 10px;
+  display:inline-block;
+}
+
+.read-more:hover {
+  background-color: #b0254c
+}
