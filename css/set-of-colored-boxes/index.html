@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colored Boxes</title>
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    <h1>Colored Boxes</h1>
+    <div class="color-grid">
+        <div class="color-box color1"></div>
+        <div class="color-box color2"></div>
+        <div class="color-box color3"></div>
+        <div class="color-box color4"></div>
+        <div class="color-box color5"></div>
+    </div>
+<!--
+    Código em python para gerar cores aleatórias para CSS:
+    import random
+
+######################## Gera hexadecimal ######################################
+lista = "0123456789ABCDEF"
+lista = list(lista)
+print('Random hexadecimal: #' + lista[random.randint(0,len(lista)-1)] + lista[random.randint(0,len(lista)-1)] + lista[random.randint(0,len(lista)-1)] + lista[random.randint(0,len(lista)-1)] + lista[random.randint(0,len(lista)-1)] + lista[random.randint(0,len(lista)-1)])
+
+####################### Gera RGB ###############################################
+
+print(f'Random RGB: rgba({random.randint(0,255)}, {random.randint(0,255)}, {random.randint(0,255)}, {round(random.random(),2)})')
+
+##################### Gera Named-Color #########################################
+css_named_colors = [
+    "AliceBlue", "AntiqueWhite", "Aqua", "Aquamarine", "Azure",
+    "Beige", "Bisque", "Black", "BlanchedAlmond", "Blue",
+    "BlueViolet", "Brown", "BurlyWood", "CadetBlue", "Chartreuse",
+    "Chocolate", "Coral", "CornflowerBlue", "Cornsilk", "Crimson",
+    "Cyan", "DarkBlue", "DarkCyan", "DarkGoldenRod", "DarkGray",
+    "DarkGrey", "DarkGreen", "DarkKhaki", "DarkMagenta", "DarkOliveGreen",
+    "DarkOrange", "DarkOrchid", "DarkRed", "DarkSalmon", "DarkSeaGreen",
+    "DarkSlateBlue", "DarkSlateGray", "DarkSlateGrey", "DarkTurquoise", "DarkViolet",
+    "DeepPink", "DeepSkyBlue", "DimGray", "DimGrey", "DodgerBlue",
+    "FireBrick", "FloralWhite", "ForestGreen", "Fuchsia", "Gainsboro",
+    "GhostWhite", "Gold", "GoldenRod", "Gray", "Grey",
+    "Green", "GreenYellow", "HoneyDew", "HotPink", "IndianRed",
+    "Indigo", "Ivory", "Khaki", "Lavender", "LavenderBlush",
+    "LawnGreen", "LemonChiffon", "LightBlue", "LightCoral", "LightCyan",
+    "LightGoldenRodYellow", "LightGray", "LightGrey", "LightGreen", "LightPink",
+    "LightSalmon", "LightSeaGreen", "LightSkyBlue", "LightSlateGray", "LightSlateGrey",
+    "LightSteelBlue", "LightYellow", "Lime", "LimeGreen", "Linen",
+    "Magenta", "Maroon", "MediumAquaMarine", "MediumBlue", "MediumOrchid",
+    "MediumPurple", "MediumSeaGreen", "MediumSlateBlue", "MediumSpringGreen", "MediumTurquoise",
+    "MediumVioletRed", "MidnightBlue", "MintCream", "MistyRose", "Moccasin",
+    "NavajoWhite", "Navy", "OldLace", "Olive", "OliveDrab",
+    "Orange", "OrangeRed", "Orchid", "PaleGoldenRod", "PaleGreen",
+    "PaleTurquoise", "PaleVioletRed", "PapayaWhip", "PeachPuff", "Peru",
+    "Pink", "Plum", "PowderBlue", "Purple", "RebeccaPurple",
+    "Red", "RosyBrown", "RoyalBlue", "SaddleBrown", "Salmon",
+    "SandyBrown", "SeaGreen", "Seashell", "Sienna", "Silver",
+    "SkyBlue", "SlateBlue", "SlateGray", "SlateGrey", "Snow",
+    "SpringGreen", "SteelBlue", "Tan", "Teal", "Thistle",
+    "Tomato", "Turquoise", "Violet", "Wheat", "White",
+    "WhiteSmoke", "Yellow", "YellowGreen"
+]
+
+print('Random Named-Color: ' + css_named_colors[random.randint(0,len(css_named_colors) - 1)] )
+
+############################## Gera HSL ########################################
+
+print(f'Random HSL: hsla({round(360*random.random(),2)}, {random.randrange(0,100,1)}%, {random.randrange(0,100,1)}%, {round(random.random(),2)})')
+
+###########################
+ -->
+</body>
+</html>

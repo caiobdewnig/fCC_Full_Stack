@@ -1,0 +1,36 @@
+body {
+  background:#f4f4f4;
+}
+
+.color-box {
+  display: inline-block;
+  width: 210px;
+  height: 210px;
+  margin: 69px;
+  border-radius: 20px;
+  border: 6px solid black;
+  box-shadow: 10px 10px 5px grey 
+}
+
+h1 {
+  text-align: center;
+}
+.color1 {
+  background-color: #FF5733;
+}
+
+.color2 {
+  background-color: rgb(255,0,0);
+}
+
+.color3 {
+  background-color: lightgreen;
+}
+
+.color4 {
+  background-color: hsl(8.84, 96%, 59%);
+}
+
+.color5 {
+  background-color: Lavender;
+}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Job Application Form</title>
+        <link href="styles.css" rel="stylesheet">
+    </head>
+
+    <body>
+
+        <div class="container">
+
+            <form>
+                <h1>Job Aplication</h1>
+                <label for="name" class="name">Name:</label>
+                <br>
+                <input type="text" id="name" class="name">
+
+                <br>
+
+                <label for="email" class="email">E-mail:</label>
+                <br>
+                <input type="email" id="email" class="email">
+
+                <br>
+
+                <label for="options" class="option">Option:</label>
+                <br>
+                <select id="position" class="option">
+                    <option value="options-opener">Select a option</option>
+                    <option value="frontend-option">Front-end Developer</option>
+                    <option value="backend-option">Back-end Developer</option>
+                    <option value="fullstack-option">Fullstack Developer</option>
+                    <option value="chinas-enemy-option">China's Enemy</option>
+                </select>
+
+                <br>
+
+                <label for="options" class="radio-group">Availability:</label>
+                <br>
+                <fieldset class="radio-group" id="options">
+                    <input type="radio" id="full-time" name="availability">
+                    <label for="full-time">Full-time</label>
+
+                    <input type="radio" id="part-time" name="availability">
+                    <label for="part-time">Part-time</label>
+
+                    <input type="radio" id="night-shift" name="availability">
+                    <label for="night-shift">Night-shift</label>
+                </fieldset>
+
+                <label for="message" class="question">Why do you want this job?</label>
+                <br>
+                <textarea id="message" class="question"></textarea>
+
+                <br>
+
+                <button type="submit">Submit</button>
+
+            </form>
+
+        </div>
+
+    </body>
+
+</html>
