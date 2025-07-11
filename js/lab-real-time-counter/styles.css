@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #dbeafe, #f0fdf4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #1f2937;
+    padding: 2rem;
+    animation: fadeIn 1s ease-out;
+}
+
+textarea#text-input {
+    width: 90%;
+    max-width: 500px;
+    height: 160px;
+    padding: 1.25rem;
+    border: none;
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(8px);
+    color: #111827;
+    font-size: 1.05rem;
+    font-weight: 500;
+    resize: none;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+    outline: none;
+    transition: transform 0.3s ease, background 0.3s ease;
+    animation: slideUp 0.6s ease-out;
+}
+
+textarea#text-input:focus {
+    background: rgba(255, 255, 255, 0.75);
+    transform: scale(1.015);
+    box-shadow: 0 0 12px rgba(100, 100, 255, 0.1);
+}
+
+p#char-count {
+    margin-top: 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    background: linear-gradient(90deg, #a5f3fc, #bfdbfe);
+    color: #1e3a8a;
+    padding: 0.75rem 1.25rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    animation: fadeIn 1.2s ease-out;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+h1 {
+  position: absolute;
+  top: 15vh;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Nothing You Could Do', cursive;
+  font-size: 2.8rem;
+  font-weight: normal;
+  color: #374151; /* cinza escuro suave */
+  text-align: center;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.07);
+
+}
+
+.chaotic {
+  position: absolute !important;
+  animation: spin 0.6s linear infinite;
+  z-index: 999;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
