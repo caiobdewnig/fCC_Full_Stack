@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lightbox Viewer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <style>
+      /* GERAL */
+      body {
+        margin: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f5e0cb;
+        color: #333;
+      }
+
+      #page-title-stripe {
+        width: 100vw;
+        height: 5rem;
+        background-color: #e68686;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        margin-top: 50px;
+      }
+
+      .page-title {
+        font-family: 'Great Vibes', cursive;
+        font-size: 3rem;
+        text-align: center;
+        margin: 0;
+        color: #5a3e36;
+        text-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeSlideUp 1s ease-out forwards;
+        animation-delay: 0.2s;
+      }
+
+      /* GALERIA */
+      .gallery {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        padding: 2rem;
+      }
+
+      .gallery-item {
+        max-width: 200px;
+        cursor: pointer;
+        border-radius: 12px;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .gallery-item:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      }
+
+      .rafael-line {
+        width: 100%;
+        text-align: center;
+        font-family: 'Great Vibes', cursive;
+        font-size: 2.2rem;
+        color: #5a3e36;
+        margin-top: 3rem;
+        text-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        animation: fadeSlideUp 1s ease-out forwards;
+        opacity: 0;
+        transform: translateY(20px);
+        animation-delay: 0.4s;
+      }
+
+      /* LIGHTBOX */
+      .lightbox {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        display: none;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background-color: rgba(0, 0, 0, 0.8);
+        backdrop-filter: blur(4px);
+        z-index: 1000;
+        padding: 2rem;
+        box-sizing: border-box;
+      }
+
+      #lightbox-image {
+        max-width: 90%;
+        max-height: 70vh;
+        border-radius: 16px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+        margin-bottom: 1rem;
+      }
+
+      #close-btn {
+        background-color: #ff6961;
+        border: none;
+        color: white;
+        font-weight: bold;
+        font-size: 1rem;
+        padding: 0.75rem 1.5rem;
+        border-radius: 999px;
+        cursor: pointer;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        transition: background-color 0.3s ease;
+      }
+
+      #close-btn:hover {
+        background-color: #e0544d;
+      }
+
+      .lightbox-title {
+        font-family: 'Great Vibes', cursive;
+        font-size: 2.5rem;
+        color: rgb(255, 230, 230);
+        margin-bottom: 1.5rem;
+        text-align: center;
+        opacity: 0;
+        transform: translateY(20px);
+        text-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Animação */
+      @keyframes fadeSlideUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="page-title-stripe">
+      <h2 class="page-title">Museum Gallery</h2>
+    </div>
+
+    <div class="gallery">
+      <img class="gallery-item" src="https://cdn.freecodecamp.org/curriculum/labs/stonehenge-thumbnail.jpg">
+      <img class="gallery-item" src="https://cdn.freecodecamp.org/curriculum/labs/storm-thumbnail.jpg">
+      <img class="gallery-item" src="https://cdn.freecodecamp.org/curriculum/labs/trees-thumbnail.jpg">
+    </div>
+
+    <div class="rafael-line">Estoure o Rafael</div>
+
+    <div class="lightbox">
+      <h2 class="lightbox-title">Rafael Estourado</h2>
+      <img id="lightbox-image">
+      <button id="close-btn">Bárbara Bglinho ✨</button>
+    </div>
+
+    <script>
+      const galleryItems = document.querySelectorAll(".gallery-item");
+      const lightbox = document.querySelector(".lightbox");
+      const lightboxImage = document.querySelector("#lightbox-image");
+      const closeBtn = document.querySelector("#close-btn");
+      const lightboxTitle = document.querySelector(".lightbox-title");
+
+      const fullSizeImages = [
+        "https://cdn.freecodecamp.org/curriculum/labs/stonehenge.jpg",
+        "https://cdn.freecodecamp.org/curriculum/labs/storm.jpg",
+        "https://cdn.freecodecamp.org/curriculum/labs/trees.jpg"
+      ];
+
+      // Abrir lightbox ao clicar nas imagens
+      galleryItems.forEach((item, index) => {
+        item.addEventListener("click", () => {
+          lightboxImage.setAttribute("src", fullSizeImages[index]);
+          lightbox.style.display = "flex";
+          
+          // Ativa a animação do título no momento certo
+          lightboxTitle.style.animation = "fadeSlideUp 1s ease-out forwards";
+        });
+      });
+
+      // Fechar lightbox ao clicar no botão
+      closeBtn.addEventListener("click", () => {
+        lightbox.style.display = "none";
+        
+        // Resetar a animação se abrir de novo
+        lightboxTitle.style.animation = "none";
+      });
+
+      // Fechar lightbox ao clicar fora da imagem/botão
+      lightbox.addEventListener("click", (e) => {
+        if (e.target === lightbox) {
+          lightbox.style.display = "none";
+          lightboxTitle.style.animation = "none";
+        }
+      });
+    </script>
+  </body>
+</html>
