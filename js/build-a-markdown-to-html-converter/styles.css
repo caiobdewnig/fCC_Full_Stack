@@ -1,0 +1,278 @@
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    padding: 40px;
+    background: linear-gradient(120deg, #0e1d18 0%, #1a2e27 100%);
+    color: #f1f5f4;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    animation: subtleBackgroundMove 30s ease-in-out infinite;
+}
+
+@keyframes subtleBackgroundMove {
+    0%, 100% {
+        background-position: 0% 0%;
+    }
+    50% {
+        background-position: 100% 100%;
+    }
+}
+
+h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin-bottom: 30px;
+    color: #a3bfb7;
+    letter-spacing: 3px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.container {
+    background: #1b2f28;
+    border-radius: 14px;
+    padding: 24px;
+    margin-bottom: 25px;
+    border: 1px solid #2f4e45;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    max-width: 320px; /* antes era 480px */
+    width: 100%;
+    flex: 1 1 300px;  /* mais compactos */
+}
+
+.container:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin-bottom: 16px;
+    color: #9db8b1;
+    border-bottom: 1px solid rgba(157, 184, 177, 0.2);
+    padding-bottom: 6px;
+    font-weight: 500;
+}
+
+#container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 24px; /* espaçamento entre os containers */
+    justify-content: center;
+    align-items: flex-start;
+    max-width: 100%;
+    width: 100%;
+}
+
+#markdown-input,
+#html-output,
+#preview {
+    width: 100%;
+    height: 50vh;
+    border-radius: 10px;
+    padding: 16px;
+    box-sizing: border-box;
+    font-size: 1rem;
+    background: #162721;
+    color: #dce7e3;
+    border: 1px solid #2c463f;
+    font-family: 'Fira Code', monospace;
+    resize: vertical;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    justify-content: center;
+}
+
+#markdown-input:focus {
+    outline: none;
+    border-color: #a3bfb7;
+    box-shadow: 0 0 0 3px rgba(163, 191, 183, 0.15);
+}
+
+#html-output,
+#preview {
+    white-space: pre-wrap;
+    overflow-y: auto;
+}
+
+#html-output {
+    color: #b5c8c3;
+    background: #141f1c;
+    border: 1px dashed #3d5951;
+}
+
+#preview {
+    background: #1b2f28;
+    color: #f1f5f4;
+    line-height: 1.6;
+}
+
+/* Scrollbar leve */
+::-webkit-scrollbar {
+    width: 10px;
+    background: #121f1a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #3d5951;
+    border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #4d6b63;
+}
+
+/* Responsivo */
+@media (min-width: 900px) {
+    #container {
+        flex-direction: row;
+        gap: 40px;
+    }
+
+    .container {
+        flex: 1 1 360px;
+        max-width: 480px;
+    }
+
+    #markdown-input,
+    #html-output,
+    #preview {
+        height: 240px;
+    }
+}
+
+/* Seleção suave */
+*::selection {
+    background: rgba(157, 184, 177, 0.2);
+    color: #ffffff;
+}
+
+body::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: radial-gradient(circle,
+        rgba(163, 191, 183, 0.25) 0%,
+        rgba(163, 191, 183, 0.1) 40%,
+        transparent 70%);
+    transform: translate(-50%, -50%);
+    animation: radialPulse 10s infinite ease-out;
+    z-index: -1;
+}
+
+@keyframes radialPulse {
+    0% {
+        width: 0;
+        height: 0;
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 0.25;
+    }
+    100% {
+        width: 250vw;
+        height: 250vw;
+        opacity: 0;
+    }
+}
+
+#markdown-input,
+#html-output,
+#preview {
+    height: 200px; /* ou menor, se preferir */
+}
+
+h1 {
+    /* já existente */
+    text-shadow: 0 0 8px rgba(163, 191, 183, 0.3); /* brilho sutil esverdeado */
+}
+
+h2 {
+    /* já existente */
+    text-shadow: 0 0 6px rgba(157, 184, 177, 0.25); /* brilho mais leve */
+}
+
+/* Remova ou reduza a animação do body */
+body {
+  animation: none; /* ou comente */
+}
+
+/* OU (melhor) aplique no ::after e diminua o tamanho + use transform: scale */
+body::after {
+  width: 100vw;
+  height: 100vw;
+  animation: radialPulse 10s infinite ease-out;
+  will-change: transform, opacity;
+}
+
+@keyframes radialPulse {
+  0% {
+    transform: scale(0);
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.25;
+  }
+  100% {
+    transform: scale(3);
+    opacity: 0;
+  }
+}
+
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  padding: 40px;
+  background: #1a2e27; /* cor sólida, mais leve que gradiente */
+  color: #f1f5f4;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin: 0;
+  overflow-y: auto
+  /* overflow: hidden;  <--- REMOVIDO */
+}
+
+/* Pulso otimizado */
+body::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle,
+    rgba(163, 191, 183, 0.15) 0%,
+    rgba(163, 191, 183, 0.05) 50%,
+    transparent 80%);
+  transform: translate(-50%, -50%) scale(0);
+  animation: radialPulse 12s infinite ease-out;
+  z-index: -1;
+  pointer-events: none;
+}
+
+@keyframes radialPulse {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.15;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(2.5);
+    opacity: 0;
+  }
+}
