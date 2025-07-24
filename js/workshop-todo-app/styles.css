@@ -1,0 +1,309 @@
+/* 1. Import da Fonte do Google */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap');
+
+/* 2. Variáveis de Cores e Estilos Globais */
+:root {
+  --background-color: #1a1a2e; /* Azul noturno profundo */
+  --surface-color: #16213e;    /* Superfície principal (container do app) */
+  --primary-color: #0f3460;     /* Tom de azul primário */
+  --accent-color: #537fe7;      /* Azul vibrante para acentos e interações */
+  --text-primary: #e0e0e0;      /* Cor de texto principal (claro) */
+  --text-secondary: #a0a0c0;   /* Cor de texto secundário */
+  --delete-color: #e94560;      /* Vermelho suave para o botão de deletar */
+  --shadow-color: rgba(0, 0, 0, 0.25);
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 3. Animações */
+@keyframes fadeInScaleUp {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* 4. Estilos do Corpo e Títulos */
+body {
+  background-color: var(--background-color);
+  font-family: 'Inter', sans-serif;
+  color: var(--text-primary);
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+h1 {
+  font-weight: 700;
+  font-size: 2.5rem;
+  color: var(--text-primary);
+  margin: 20px 0 40px 0;
+}
+
+/* 5. Container Principal da Aplicação */
+.todo-app {
+  background-color: var(--surface-color);
+  width: 350px;
+  height: 500px;
+  border: none;
+  border-radius: 16px;
+  padding: 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  box-shadow: 0 8px 32px 0 var(--shadow-color);
+  overflow: hidden; /* Garante que os cantos arredondados sejam mantidos */
+}
+
+/* 6. Estilos de Botões */
+.btn {
+  cursor: pointer;
+  width: auto;
+  padding: 10px 20px;
+  margin: 5px;
+  color: var(--text-primary);
+  background-color: var(--primary-color);
+  border: 2px solid var(--accent-color);
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  transform: scale(1);
+}
+
+.btn:hover {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(83, 127, 231, 0.4);
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+.large-btn {
+  width: 80%;
+  padding: 12px;
+  font-size: 1.2rem;
+  align-self: center;
+}
+
+/* 7. Formulário de Tarefas com Efeito Glassmorphism */
+.task-form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(100% + 4px); /* Compensa a borda para um encaixe perfeito */
+  height: calc(100% + 4px);
+  
+  /* Efeito Glassmorphism */
+  background: rgba(22, 33, 62, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  
+  /* Animação de entrada */
+  animation: fadeInScaleUp 0.4s ease forwards;
+}
+
+.task-form.hidden {
+  display: none; /* Mantém o comportamento de ocultar */
+}
+
+.close-task-form-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.close-task-form-btn:hover {
+    transform: rotate(90deg);
+}
+
+.close-icon {
+  width: 24px;
+  height: 24px;
+}
+
+/* 8. Estilos dos Inputs do Formulário */
+.task-form-label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+#title-input,
+#date-input,
+#description-input {
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 12px;
+  background-color: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--primary-color);
+  border-radius: 8px;
+  color: var(--text-primary);
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#title-input:focus,
+#date-input:focus,
+#description-input:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px rgba(83, 127, 231, 0.3);
+}
+
+/* 9. Diálogo de Confirmação */
+#confirm-close-dialog {
+  padding: 25px;
+  border-radius: 15px;
+  border: none;
+  background-color: var(--surface-color);
+  color: var(--text-primary);
+  box-shadow: 0 8px 32px 0 var(--shadow-color);
+}
+
+.discard-message-text {
+  font-weight: 500;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+/* 10. Container e Estilos das Tarefas */
+#tasks-container {
+  height: 100%;
+  overflow-y: auto;
+  padding-right: 10px; /* Espaço para a barra de rolagem */
+}
+
+.task {
+  position: relative; /* Para posicionar os botões */
+  margin: 10px 0;
+  padding: 15px;
+  background-color: var(--primary-color);
+  border-left: 4px solid var(--accent-color);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  animation: slideIn 0.5s ease forwards;
+}
+
+.task:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.task p {
+  margin-bottom: 8px;
+  color: var(--text-secondary);
+}
+
+.task p strong {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+/* Botões de Ação na Tarefa (aparecem no hover) */
+.task .btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%) scale(0.9);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease-in-out;
+    padding: 6px 12px;
+    font-size: 0.9rem;
+}
+
+.task:hover .btn {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(-50%) scale(1);
+}
+
+.task button[onclick^="editTask"] {
+    right: 100px;
+}
+
+.task button[onclick^="deleteTask"] {
+    right: 15px;
+    background-color: var(--delete-color);
+    border-color: var(--delete-color);
+}
+
+.task button[onclick^="deleteTask"]:hover {
+    background-color: #c93049;
+    border-color: #c93049;
+    box-shadow: 0 4px 15px rgba(233, 69, 96, 0.4);
+}
+
+
+/* 11. Barra de Rolagem Customizada */
+#tasks-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+#tasks-container::-webkit-scrollbar-track {
+  background: var(--surface-color);
+  border-radius: 4px;
+}
+
+#tasks-container::-webkit-scrollbar-thumb {
+  background-color: var(--primary-color);
+  border-radius: 4px;
+  border: 2px solid var(--surface-color);
+}
+
+#tasks-container::-webkit-scrollbar-thumb:hover {
+  background-color: var(--accent-color);
+}
+
+/* 12. Media Queries */
+@media (min-width: 576px) {
+  .todo-app {
+    width: 500px;
+    height: 600px;
+  }
+}
