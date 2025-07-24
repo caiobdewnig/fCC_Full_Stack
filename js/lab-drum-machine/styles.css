@@ -1,0 +1,381 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto:wght@300;400;500&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  overflow: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 30% 70%, rgba(0, 255, 170, 0.15) 0%, transparent 50%),
+              radial-gradient(circle at 70% 30%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
+              radial-gradient(circle at 50% 50%, rgba(26, 26, 46, 0.2) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: -1;
+  animation: neonPulse 4s ease-in-out infinite alternate;
+}
+
+@keyframes neonPulse {
+  0% { opacity: 0.8; }
+  100% { opacity: 1; }
+}
+
+#drum-machine {
+  background: rgba(15, 15, 25, 0.95);
+  backdrop-filter: blur(20px);
+  border-radius: 25px;
+  padding: 40px;
+  box-shadow: 
+    0 25px 50px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(0, 255, 170, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  max-width: 600px;
+  width: 100%;
+  position: relative;
+  animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+h1 {
+  font-family: 'Orbitron', monospace;
+  font-weight: 900;
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 40px;
+  background: linear-gradient(135deg, #00ffaa, #00ffff, #0099ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 3px;
+  position: relative;
+  text-transform: uppercase;
+  filter: drop-shadow(0 0 10px rgba(0, 255, 170, 0.8))
+          drop-shadow(0 0 20px rgba(0, 255, 170, 0.6))
+          drop-shadow(0 0 30px rgba(0, 255, 170, 0.4));
+  animation: neonGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes neonGlow {
+  0% {
+    filter: drop-shadow(0 0 10px rgba(0, 255, 170, 0.8))
+            drop-shadow(0 0 20px rgba(0, 255, 170, 0.6))
+            drop-shadow(0 0 30px rgba(0, 255, 170, 0.4));
+    transform: scale(1);
+  }
+  100% {
+    filter: drop-shadow(0 0 15px rgba(0, 255, 255, 1))
+            drop-shadow(0 0 25px rgba(0, 255, 170, 0.8))
+            drop-shadow(0 0 35px rgba(0, 153, 255, 0.6))
+            drop-shadow(0 0 45px rgba(0, 255, 170, 0.4));
+    transform: scale(1.02);
+  }
+}
+
+h1::before {
+  content: 'HEATER KIT DRUM MACHINE';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, transparent 30%, rgba(0, 255, 255, 0.4) 50%, transparent 70%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: neonScan 3s linear infinite;
+  z-index: 1;
+}
+
+@keyframes neonScan {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+h1::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 4px;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(0, 255, 170, 0.5), 
+    #00ffaa, 
+    rgba(0, 255, 255, 0.8), 
+    #0099ff, 
+    rgba(0, 255, 170, 0.5), 
+    transparent);
+  border-radius: 2px;
+  box-shadow: 
+    0 0 10px rgba(0, 255, 170, 0.8),
+    0 0 20px rgba(0, 255, 170, 0.6),
+    0 0 30px rgba(0, 255, 170, 0.4);
+  animation: neonUnderline 2s ease-in-out infinite alternate;
+}
+
+@keyframes neonUnderline {
+  0% {
+    box-shadow: 
+      0 0 10px rgba(0, 255, 170, 0.8),
+      0 0 20px rgba(0, 255, 170, 0.6),
+      0 0 30px rgba(0, 255, 170, 0.4);
+  }
+  100% {
+    box-shadow: 
+      0 0 15px rgba(0, 255, 255, 1),
+      0 0 25px rgba(0, 255, 170, 0.8),
+      0 0 35px rgba(0, 153, 255, 0.6),
+      0 0 45px rgba(0, 255, 170, 0.4);
+  }
+}
+
+#pad-bank {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-bottom: 30px;
+  padding: 20px;
+  background: rgba(10, 10, 15, 0.3);
+  border-radius: 20px;
+  border: 1px solid rgba(0, 255, 170, 0.2);
+}
+
+.drum-pad {
+  width: 120px;
+  height: 120px;
+  border: none;
+  border-radius: 20px;
+  font-family: 'Orbitron', monospace;
+  font-weight: 700;
+  font-size: 2rem;
+  color: #ffffff;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  box-shadow: 
+    0 8px 25px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.3),
+    0 0 0 2px rgba(0, 255, 170, 0.3);
+  justify-self: center;
+  text-shadow: 0 0 10px rgba(0, 255, 170, 0.8);
+}
+
+.drum-pad::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(0, 255, 170, 0.1) 0%, transparent 50%);
+  border-radius: 20px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.drum-pad::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, 
+    #00ffaa, 
+    #00ffff, 
+    #0099ff, 
+    #1a1a2e, 
+    #00ffaa);
+  border-radius: 22px;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  animation: neonBorder 3s linear infinite;
+}
+
+@keyframes neonBorder {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.drum-pad:hover {
+  transform: translateY(-3px);
+  box-shadow: 
+    0 15px 35px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 0 20px rgba(0, 255, 170, 0.8),
+    0 0 30px rgba(0, 255, 170, 0.6),
+    0 0 40px rgba(0, 255, 170, 0.4);
+  background: linear-gradient(135deg, #00ffaa 0%, #0099ff 100%);
+  text-shadow: 0 0 15px rgba(255, 255, 255, 1);
+  color: #000000;
+}
+
+.drum-pad:hover::after {
+  opacity: 1;
+}
+
+.drum-pad:hover::before {
+  opacity: 1;
+}
+
+.drum-pad:active {
+  transform: translateY(0);
+  box-shadow: 
+    0 5px 15px rgba(0, 0, 0, 0.4),
+    inset 0 3px 8px rgba(0, 0, 0, 0.4),
+    0 0 25px rgba(0, 255, 255, 1),
+    0 0 35px rgba(0, 255, 255, 0.8),
+    0 0 45px rgba(0, 255, 255, 0.6);
+  background: linear-gradient(135deg, #16213e 0%, #0a0a0a 100%);
+  color: #ffffff;
+}
+
+.drum-pad:active::before {
+  opacity: 0;
+}
+
+/* Animação de pulsação quando ativo */
+@keyframes drumHit {
+  0% { transform: scale(1); }
+  50% { transform: scale(0.95); }
+  100% { transform: scale(1); }
+}
+
+.drum-pad.active {
+  animation: drumHit 0.1s ease-out;
+}
+
+#display {
+  font-family: 'Orbitron', monospace;
+  font-weight: 400;
+  font-size: 1.5rem;
+  text-align: center;
+  padding: 20px;
+  background: linear-gradient(135deg, #0a0a0a, #1a1a2e);
+  color: #00ffaa;
+  border-radius: 15px;
+  min-height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 
+    inset 0 2px 8px rgba(0, 0, 0, 0.5),
+    0 1px 0 rgba(0, 255, 170, 0.2),
+    0 0 20px rgba(0, 255, 170, 0.3),
+    0 0 30px rgba(0, 255, 170, 0.2);
+  border: 2px solid rgba(0, 255, 170, 0.5);
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+  text-shadow: 
+    0 0 10px rgba(0, 255, 170, 0.8),
+    0 0 20px rgba(0, 255, 170, 0.6);
+}
+
+#display::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(0, 255, 255, 0.3), 
+    rgba(0, 255, 170, 0.5), 
+    rgba(0, 153, 255, 0.3), 
+    transparent);
+  transition: left 0.8s ease;
+  animation: displayScan 4s linear infinite;
+}
+
+@keyframes displayScan {
+  0%, 90%, 100% { left: -100%; }
+  10%, 80% { left: 100%; }
+}
+
+#display:not(:empty)::before {
+  left: 100%;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  #drum-machine {
+    padding: 30px 20px;
+    margin: 10px;
+  }
+  
+  h1 {
+    font-size: 2.2rem;
+    margin-bottom: 30px;
+    letter-spacing: 2px;
+  }
+  
+  #pad-bank {
+    gap: 12px;
+    padding: 15px;
+  }
+  
+  .drum-pad {
+    width: 90px;
+    height: 90px;
+    font-size: 1.5rem;
+    border-radius: 15px;
+  }
+  
+  #display {
+    font-size: 1.2rem;
+    padding: 15px;
+    min-height: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .drum-pad {
+    width: 70px;
+    height: 70px;
+    font-size: 1.2rem;
+  }
+  
+  #pad-bank {
+    gap: 8px;
+  }
+  
+  h1 {
+    font-size: 1.5rem;
+  }
+}
