@@ -1,0 +1,178 @@
+/* Reset básico */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Fundo com gradiente misterioso e feliz */
+body {
+  min-height: 100vh;
+  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+  background: linear-gradient(120deg, #f8fafc 0%, #6a82fb 60%, #fc5c7d 100%);
+  color: #222;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 40px;
+  transition: background 0.5s;
+}
+
+/* Título com efeito de sombra e destaque */
+h1 {
+  font-size: 2.8rem;
+  letter-spacing: 2px;
+  text-shadow: 0 4px 16px #6a82fb55, 0 1px 0 #fff;
+  margin-bottom: 20px;
+  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+  color: #222;
+  background: linear-gradient(90deg, #43cea2 0%, #fc5c7d 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Botão estiloso e animado */
+#get-weather-btn {
+  background: linear-gradient(90deg, #43cea2 0%, #185a9d 100%);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  padding: 14px 32px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  box-shadow: 0 2px 12px rgba(67,206,162,0.2);
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.3s;
+  margin-bottom: 18px;
+  letter-spacing: 1px;
+}
+
+#get-weather-btn:hover {
+  transform: scale(1.08) rotate(-2deg);
+  box-shadow: 0 6px 24px rgba(67,206,162,0.35);
+  background: linear-gradient(90deg, #fc5c7d 0%, #43cea2 100%);
+}
+
+/* Select estiloso */
+select {
+  background: rgba(255,255,255,0.85);
+  color: #222;
+  border: 2px solid #43cea2;
+  border-radius: 12px;
+  padding: 10px 18px;
+  font-size: 1.1rem;
+  margin-bottom: 28px;
+  outline: none;
+  transition: border 0.2s, background 0.3s, color 0.3s;
+  font-weight: 600;
+  box-shadow: 0 2px 8px #6a82fb22;
+}
+
+select:focus {
+  border-color: #fc5c7d;
+  background: #f8fafc;
+  color: #185a9d;
+}
+
+/* Opções do select com contraste */
+option {
+  background: #f8fafc;
+  color: #222;
+  padding: 8px;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+/* Container dos dados */
+div {
+  background: rgba(255,255,255,0.85);
+  border-radius: 24px;
+  box-shadow: 0 4px 24px rgba(106,130,251,0.18);
+  padding: 32px 28px;
+  margin-top: 18px;
+  min-width: 320px;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  transition: opacity 0.5s, background 0.3s;
+  border: 2px solid #43cea2;
+}
+
+/* Esconde o container antes de mostrar */
+.hide {
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+}
+
+/* Imagem do clima */
+div img {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 10px;
+  filter: drop-shadow(0 2px 8px #43cea2);
+  transition: filter 0.3s;
+}
+
+/* Parágrafos dos dados */
+div {
+  background: linear-gradient(120deg, #2b2e4aee 0%, #185a9dee 100%);
+  border-radius: 24px;
+  box-shadow: 0 4px 24px rgba(106,130,251,0.18);
+  padding: 32px 28px;
+  margin-top: 18px;
+  min-width: 320px;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  transition: opacity 0.5s, background 0.3s;
+  border: 2px solid #43cea2;
+}
+
+/* Parágrafos dos dados */
+div p {
+  font-size: 1.15rem;
+  background: none;
+  color: #f8fafc;
+  font-weight: 500;
+  letter-spacing: 1px;
+  margin: 0;
+  text-shadow: 0 1px 8px #43cea288;
+  padding: 4px 0;
+  border-radius: 8px;
+  transition: color 0.3s;
+}
+
+div p strong {
+  color: #43cea2;
+  font-weight: bold;
+}
+
+/* Localização com destaque */
+#location {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #fc5c7d;
+  text-shadow: 0 2px 12px #fc5c7d88;
+}
+
+/* Responsivo */
+@media (max-width: 500px) {
+  div {
+    min-width: 90vw;
+    padding: 18px 8vw;
+  }
+  h1 {
+    font-size: 2rem;
+  }
+  select {
+    font-size: 1rem;
+  }
+}
