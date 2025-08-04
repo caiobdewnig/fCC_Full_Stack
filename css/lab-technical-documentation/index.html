@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Technical Documentation Page</title>
+    <link href="styles.css" rel="stylesheet"/>
+  </head>
+
+  <body>
+    <nav id="navbar">
+      <header>Documentação Técnica</header>
+      <a class="nav-link" href="#Regex">Regex</a>
+      <a class="nav-link" href="#DOM">DOM</a>
+      <a class="nav-link" href="#JavaScript_Functions">JavaScript Functions</a>
+      <a class="nav-link" href="#CSS_Flexbox">CSS Flexbox</a>
+      <a class="nav-link" href="#API_REST">API REST</a>
+    </nav>
+
+    <main id="main-doc">
+      <section class="main-section" id="Regex">
+        <header>Regex</header>
+        <p><strong>Regex</strong>, ou <strong>expressão regular</strong> (do inglês <em>regular expression</em>), é uma ferramenta poderosa usada para buscar, combinar e manipular padrões em textos. Ela funciona como uma linguagem própria, composta por símbolos e regras que descrevem sequências de caracteres.</p>
+
+        <p>Imagine que você quer encontrar todos os números de telefone em um documento, ou validar se um e-mail está no formato correto. Fazer isso manualmente ou com código comum pode ser trabalhoso — mas com uma expressão regular bem escrita, você resolve isso com uma única linha.</p>
+
+        <p>Exemplos práticos de uso: Verificar se um CPF tem o formato <code>000.000.000-00</code></p>
+
+        <p>Extrair todos os links de uma página HTML, validar senhas com regras específicas (mínimo de 8 caracteres, com letras maiúsculas e símbolos, por exemplo), e dividir um texto em frases, palavras ou linhas.</p>
+
+        <p>Sintaxe básica:</p>
+
+        <ul>
+          <li><code>.</code> → qualquer caractere (exceto nova linha)</li>
+          <li><code>\d</code> → um dígito (0–9)</li>
+          <li><code>\w</code> → um caractere alfanumérico</li>
+          <li><code>*</code> → zero ou mais ocorrências</li>
+          <li><code>+</code> → uma ou mais ocorrências</li>
+        </ul>
+
+        <p>Exemplo: A regex <code>^\d{2}/\d{2}/\d{4}$</code> valida uma data no formato dd/mm/aaaa, como 04/08/2025.</p>
+      </section>
+
+      <section class="main-section" id="DOM">
+        <header>DOM</header>
+        <p><strong>DOM</strong> significa <strong>Document Object Model</strong>, ou Modelo de Objeto de Documento. É a forma como os navegadores representam uma página web internamente. Quando você abre um site, o navegador transforma o HTML da página em uma estrutura de objetos que podem ser acessados e modificados com JavaScript — isso é o DOM.</p>
+
+        <p>Pense no DOM como uma árvore, onde cada parte do site (como <code>div</code>, <code>h1</code>, <code>p</code>, etc.) vira um nó (ou node). Com JavaScript, você pode usar o DOM para mudar textos, trocar estilos, responder a cliques, criar elementos novos, remover partes da página, entre muitas outras ações.</p>
+
+        <p>Exemplo prático: Se uma página tem esse HTML:</p>
+
+        <p><code>&lt;p id="mensagem"&gt;Olá!&lt;/p&gt;</code></p>
+
+        <p>Você pode mudar o texto com JavaScript assim:</p>
+
+        <p><code>document.getElementById("mensagem").textContent = "Oi, tudo bem?";</code></p>
+
+        <p>Com o DOM, você pode:</p>
+
+        <ul>
+          <li>Interagir com elementos da página em tempo real</li>
+          <li>Criar interfaces dinâmicas (sem recarregar a página)</li>
+          <li>Fazer validação de formulários</li>
+          <li>Criar animações, efeitos e interações com o usuário</li>
+          <li>Manipular eventos como cliques, teclado e mouse</li>
+        </ul>
+      </section>
+
+      <section class="main-section" id="JavaScript_Functions">
+        <header>JavaScript Functions</header>
+        <p>As <strong>funções</strong> em JavaScript são blocos de código reutilizáveis que executam uma tarefa específica. Elas são fundamentais para organizar e estruturar seu código, evitando repetição e tornando-o mais legível e maintível.</p>
+
+        <p>Uma função pode receber parâmetros (dados de entrada), processar esses dados e retornar um resultado. Existem várias formas de declarar funções em JavaScript:</p>
+
+        <p>Declaração tradicional: <code>function nomeDaFuncao() { }</code></p>
+
+        <p>Expressão de função: <code>const minhaFuncao = function() { }</code></p>
+
+        <p>Arrow function (ES6): <code>const minhaFuncao = () =&gt; { }</code></p>
+
+        <p>Exemplo prático de uma função que calcula a área de um retângulo:</p>
+
+        <p><code>function calcularArea(largura, altura) { return largura * altura; }</code></p>
+
+        <ul>
+          <li>Parâmetros são as variáveis que a função recebe</li>
+          <li>O <code>return</code> define o valor que a função devolve</li>
+          <li>Funções podem ser chamadas quantas vezes precisar</li>
+          <li>Ajudam a evitar código duplicado</li>
+        </ul>
+      </section>
+
+      <section class="main-section" id="CSS_Flexbox">
+        <header>CSS Flexbox</header>
+        <p><strong>Flexbox</strong> é um método de layout em CSS que oferece uma maneira eficiente de organizar, distribuir e alinhar elementos em um container, mesmo quando o tamanho dos elementos é desconhecido ou dinâmico.</p>
+
+        <p>Para usar Flexbox, você define <code>display: flex</code> no elemento pai (container). Isso transforma os elementos filhos em flex items, que podem ser facilmente controlados com propriedades específicas.</p>
+
+        <p>Principais propriedades do container:</p>
+
+        <ul>
+          <li><code>justify-content</code>: alinha itens no eixo principal</li>
+          <li><code>align-items</code>: alinha itens no eixo transversal</li>
+          <li><code>flex-direction</code>: define a direção dos itens (row, column)</li>
+          <li><code>flex-wrap</code>: permite quebra de linha dos itens</li>
+          <li><code>gap</code>: define espaçamento entre os itens</li>
+        </ul>
+
+        <p>Exemplo básico: <code>.container { display: flex; justify-content: center; align-items: center; }</code></p>
+
+        <p>Flexbox resolve muitos problemas comuns de CSS, como centralização vertical, distribuição igual de espaço entre elementos, e criação de layouts responsivos sem cálculos complexos.</p>
+      </section>
+
+      <section class="main-section" id="API_REST">
+        <header>API REST</header>
+        <p><strong>API REST</strong> (Representational State Transfer) é um estilo arquitetural para desenvolvimento de serviços web. Uma API REST permite que diferentes aplicações se comuniquem através de requisições HTTP, trocando dados geralmente em formato JSON.</p>
+
+        <p>REST usa os métodos HTTP padrão para diferentes operações:</p>
+
+        <ul>
+          <li><code>GET</code>: buscar/ler dados</li>
+          <li><code>POST</code>: criar novos dados</li>
+          <li><code>PUT</code>: atualizar dados existentes</li>
+          <li><code>DELETE</code>: remover dados</li>
+        </ul>
+
+        <p>Exemplo de endpoint REST: <code>GET /api/users/123</code> retorna informações do usuário com ID 123.</p>
+
+        <p>Características importantes das APIs REST:</p>
+
+        <p>São stateless (não mantém estado entre requisições), usam URLs padronizadas para identificar recursos, retornam códigos de status HTTP apropriados (200, 404, 500, etc.), e podem ser consumidas por qualquer linguagem de programação.</p>
+
+        <p>APIs REST são amplamente utilizadas para integrar sistemas, criar aplicações móveis, desenvolver SPAs (Single Page Applications) e permitir comunicação entre microserviços.</p>
+      </section>
+    </main>
+  </body>
+</html>
