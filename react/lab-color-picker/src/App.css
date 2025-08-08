@@ -1,0 +1,30 @@
+body{
+  width: 100vw;
+  height: 100vh;
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  font-size: 20px;
+  letter-spacing: 2px;
+  word-spacing: 2px;
+  color: #000000;
+  font-weight: 700;
+  text-decoration: none;
+  font-style: italic;
+  font-variant: normal;
+  text-transform: capitalize;
+  text-decoration: underline solid rgb(0, 0 , 0);
+}
+
+#color-picker-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #ffffff;
+}
+
+input[type="color"] {
+  margin-top: 2vh;
+  height: 40px;
+}
