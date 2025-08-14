@@ -7,7 +7,7 @@ import './App.css'
 export function EventRSVPForm() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [attendees, setAttendees] = useState(1);
+  const [attendees, setAttendees] = useState(0);
   const [dietary, setDietary] = useState('');
   const [bringingGuests, setBringingGuests] = useState(false);
   const [submittedData, setSubmittedData] = useState(null);
